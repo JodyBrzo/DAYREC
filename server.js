@@ -1,4 +1,4 @@
-// Requiring necessary npm packages
+// Requiring necessary npm package
 const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
