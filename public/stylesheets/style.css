@@ -2,3 +2,37 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+/* Navbar styling */
+.navbar {
+  border: 1px solid white;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.25rem;
+  margin-left: 1.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  text-align: right;
+  font-size: 1.75rem;
+  margin-right: 1rem;
+}
+
+.navbar-toggler-icon {
+  margin-right: 1rem;
+}
+
+/* Headers styling */
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
