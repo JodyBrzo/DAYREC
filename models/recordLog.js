@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    actualRecord: {
+    actualShare: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

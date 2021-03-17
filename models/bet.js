@@ -1,5 +1,3 @@
-const User = require("../models/user");
-
 // Creating our Bets model
 module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
@@ -7,12 +5,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    guessRecord: {
+    guessShare: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
   });
 
-  Bet.belongsTo(User, { foreignKey: "userId" }); // Adds fk userId to Bet
+  Bet.associate = models => {
+    Bet.belongsTo(models.User, { foreignKey: "userId" }); // Adds fk userId to Bet
+  };
   return Bet;
 };
