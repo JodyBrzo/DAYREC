@@ -3,11 +3,13 @@ module.exports = function(sequelize, DataTypes) {
   const Bet = sequelize.define("Bet", {
     guessRecord: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     },
     guessShare: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      defaultValue: 0
     }
   });
 
