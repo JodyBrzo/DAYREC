@@ -1,5 +1,4 @@
+// const express = require("express");
+// const router = express.Router();
 
-const express = require("express");
-const router = express.Router();
-
-const recordLogRepo = require("../repositories/recordLogRepository");
+// const recordLogRepo = require("../repositories/recordLogRepository");
