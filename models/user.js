@@ -22,11 +22,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    totalCoins: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0
-    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

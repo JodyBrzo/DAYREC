@@ -36,7 +36,7 @@ const getBet = userId => {
   }
 };
 
-//returns the total coins for the user 
+//returns the total coins for the user
 const getBetsTotalCoins = userId => {
   if (userId) {
     db.Bet.sum("awardedCoins", {
@@ -77,7 +77,7 @@ const getBets = userId => {
       },
       include: {
         model: Bet
-      },
+      }
     })
       .then(userWithBets => {
         return userWithBets;
