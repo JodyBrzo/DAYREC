@@ -22,10 +22,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    totalCoins: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      unique: false
+      defaultValue: false
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -41,5 +46,8 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+  User.associate = models => {
+    User.hasMany(models.Bet, { onDelete: "cascade" }); // Adds delete all bets that match the fk
+  };
   return User;
 };

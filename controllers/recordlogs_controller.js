@@ -1,3 +1,8 @@
+
+const express = require("express");
+const router = express.Router();
+
+const recordLogRepo = require("../repositories/recordLogRepository");
 const express = require("express");
 
 const router = express.Router();
@@ -13,4 +18,3 @@ module.exports = (app) => {
       .then(results => res.json(results));
   });
 };
-
