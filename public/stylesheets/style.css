@@ -27,7 +27,7 @@ img {
 .logo {
   font-family: 'Press Start 2P', cursive;
   font-size: 4rem;
-  color: rgb(219, 63, 89)
+  color: rgb(219, 63, 89);
 }
 
 /* DAYREC in header */
@@ -39,6 +39,8 @@ h3 {
   font-family: 'Maven Pro', sans-serif;
   font-weight: bolder;
 }
+
+
 
 /* Dayrec in navbar links to main members page */
 .nav-brand {
@@ -306,6 +308,9 @@ width: auto;
 @media screen and (max-width: 768px) {
   .welcome {
     border-right: none;
+  }
+  .logo {
+    text-align: left;
   }
 }
 
