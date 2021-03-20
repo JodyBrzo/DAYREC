@@ -1,0 +1,1 @@
+//routes to members, place bet, bet info, log out
