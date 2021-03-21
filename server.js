@@ -20,6 +20,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Set Handlebars
+const exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Requiring our routes
 //SHOULDN"T THIS JUST BE FOR THE CONTROLLER? SHOULD LOOK LIKE THIS?
 // require("./controllers/bets_controller.js")(app);
