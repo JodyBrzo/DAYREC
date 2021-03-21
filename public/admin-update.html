@@ -13,18 +13,22 @@
   <link href="stylesheets/style.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Maven+Pro:wght@800;900&family=Press+Start+2P&family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
- <!-- Welcome Font -->
- <link rel="preconnect" href="https://fonts.gstatic.com">
- <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Maven+Pro:wght@800;900&family=Press+Start+2P&family=Roboto:wght@400;700;900&display=swap"
+    rel="stylesheet">
+  <!-- Welcome Font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,700&display=swap"
+    rel="stylesheet">
+
 <body>
 
   <!-- NavBar -->
   <nav class="navbar navbar-expand-md navbar-dark text-light">
     <h3 class="logo">D</h3>
     <h3><a class="nav-brand" href="members.html">dayrec</a></h3>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -33,7 +37,7 @@
       </div>
     </div>
   </nav>
-  <div class="place-bet-container container">
+  <div class="admin-update-container container">
     <div class="row">
       <div class="col text-left">
         <h1>WELCOME TO DAYREC <span class="member-name"></span></h1>
@@ -41,21 +45,20 @@
     </div>
     <div class="row">
       <div class="col-md-6 col-sm-12">
-        <h2 class="place-your-bet">Record Class Data</h2>
-        <form class="bet">
+        <h2 class="record-class-data">Record Class Data</h2>
+        <form class="record-data">
           <div class="form-group">
-            <label for="screenshare-bet"># Screenshare Misses</label>
-            <input type="text" class="form-control" id="screenshare-actual" placeholder="Enter Actual Screenshare Misses">
+            <label for="screenshare-misses"># Screenshare Misses</label>
+            <input type="text" class="form-control" id="screenshare-misses"
+              placeholder="Enter Actual Screenshare Misses">
           </div>
           <div class="form-group">
-            <label for="recording-bet"># Recording Misses</label>
-            <input type="text" class="form-control mb-4" id="recording-actual" placeholder="Enter Actual Recording Misses">
+            <label for="recording-misses"># Recording Misses</label>
+            <input type="text" class="form-control mb-4" id="recording-misses"
+              placeholder="Enter Actual Recording Misses">
           </div>
-          <div class="form-group">
-            <label for="recording-bet">Class ID</label>
-            <input type="text" class="form-control mb-4" id="class-id" placeholder="Enter Class ID">
-          </div>
-          <button type="submit" class="place-bet-button submit-button btn btn-default mt-3" id="place-bet">UPDATE</button>
+          <button type="submit" class="update-button submit-button btn btn-default mt-3"
+            id="update-button">UPDATE</button>
         </form>
       </div>
     </div>
@@ -64,9 +67,9 @@
 
 
   <footer class="footer-margin fixed-bottom card-footer bg-dark text-light text-center footer-position"><a
-    href="https://github.com/JodyBrzo/DAYREC" class="github" target="_blank"><img
-      src="https://www.sferalabs.cc/wp-content/uploads/github-logo-white.png" alt="Github Logo" id="github"></a>
-</footer>
+      href="https://github.com/JodyBrzo/DAYREC" class="github" target="_blank"><img
+        src="https://www.sferalabs.cc/wp-content/uploads/github-logo-white.png" alt="Github Logo" id="github"></a>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/place-bet.js"></script>
