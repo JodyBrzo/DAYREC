@@ -81,22 +81,25 @@
             <canvas id="myChart" width="400" height="200"></canvas>
           </div>
             <script>
-              let myChart = document.getElementById("myChart").getContext("2d");
-              var thisChart = new Chart(myChart, {
+              const xlabels ={{#each users}}
+              {{/each}};
+              //turn into a handlebar function that calls the max of the destry coins as your Y axis
+              const ylabels = 100;
+
+              chartIt()
+
+              async function chartIt() {
+                await getData();
+                const ctx = document.getElementById("myChart").getContext("2d");
+                const thisChart = new Chart(ctx, {
                 type: "bar",
                 data: {
-                  labels: [
-                    "Red",
-                    "Blue",
-                    "Yellow",
-                    "Green",
-                    "Purple",
-                    "Orange",
-                  ],
+                  labels: xlabels,
                   datasets: [
                     {
-                      label: "# of Votes",
-                      data: [12, 19, 3, 5, 2, 3],
+                      label: "Destry Coins",
+                      //pulls the data for each user's level of destry coins
+                      data: [{{#each destryCoins}}],
                       backgroundColor: [
                         "rgba(255, 99, 132, 0.2)",
                         "rgba(54, 162, 235, 0.2)",
@@ -117,18 +120,9 @@
                     },
                   ],
                 },
-                options: {
-                  scales: {
-                    yAxes: [
-                      {
-                        ticks: {
-                          beginAtZero: true,
-                        },
-                      },
-                    ],
-                  },
-                },
+
               });
+            }
             </script>
           </div>
           <button type="submit" class="place-bet-button btn btn-default">
