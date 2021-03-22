@@ -15,18 +15,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-
-// Handlebars views
-app.set("views", path.join(__dirname, "views"));
-app.engine(
-  "handlebars",
-  exphbs.create({
-    defaultLayout: "main",
-    layoutsDir: app.get("views") + "/layouts",
-    partialsDir: app.get("views") + "/partials"
-  }).engine
-);
-app.set("view engine", "handlebars");
+app.use((req, res, next) => {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+res.locals.user = req.user;
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -40,8 +33,15 @@ require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 //Set Handlebars
-const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("views", path.join(__dirname, "views"));
+app.engine(
+  "handlebars",
+  exphbs.create({
+    defaultLayout: "main",
+    layoutsDir: app.get("views") + "/layouts",
+    partialsDir: app.get("views") + "/partials"
+  }).engine
+);
 app.set("view engine", "handlebars");
 
 // Syncing our database and logging a message to the user upon success
