@@ -14,7 +14,7 @@ $(document).ready(() => {
       studentName: studentName.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!userData.email || !userData.password || !userData.name) {
       return;
     }
     // If we have an email and password, run the signUpUser function

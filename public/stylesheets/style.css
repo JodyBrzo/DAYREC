@@ -18,6 +18,10 @@
   padding-bottom: 1.5rem;
 }
 
+.float-right {
+  float: right;
+}
+
 /* Coin image */
 img {
   height: 3rem;
@@ -86,7 +90,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 2.25rem;
-  margin-right: 4rem;
+  margin-right: 10rem;
 }
 
 h1 {
@@ -251,6 +255,14 @@ input {
   margin-bottom: 2rem;
 }
 
+.record-class-data {
+  font-family: 'Roboto', sans-serif;
+  font-size: 4rem;
+  font-weight: black;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
 /* Place bet button */
 .place-bet-button {
   font-family: 'Roboto', sans-serif;
@@ -266,6 +278,22 @@ input {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+.place-bet-link {
+  font-family: 'Roboto', sans-serif;
+  height: 40px;
+  width: 120px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid rgb(219, 63, 89);
+  background: rgb(0, 0, 0);
+  color: whitesmoke;
+  border-radius: 40px;
+  text-align: center;
+  margin-left: 2rem;
   margin-bottom: 2rem;
 }
 
