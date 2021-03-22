@@ -15,6 +15,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+//Middleware for user authentication
 app.use((req, res, next) => {
   res.locals.login = req.isAuthenticated();
   next();
