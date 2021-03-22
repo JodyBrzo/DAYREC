@@ -34,22 +34,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
-
-//Set Handlebars
-app.set("views", path.join(__dirname, "views"));
-app.engine(
-  "handlebars",
-  exphbs.create({
-    defaultLayout: "main",
-    layoutsDir: app.get("views") + "/layouts",
-    partialsDir: app.get("views") + "/partials"
-  }).engine
-);
-app.set("view engine", "handlebars");
-
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
