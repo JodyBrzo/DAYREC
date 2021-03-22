@@ -1,3 +1,5 @@
+global.systemStatus = undefined;
+
 // Requiring necessary npm package
 const express = require("express");
 const session = require("express-session");
@@ -7,6 +9,9 @@ const passport = require("./config/passport");
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8083;
 const db = require("./models");
+
+const systemStatusRepo = require("./repositories/systemStatusRepository");
+global.systemStatus = systemStatusRepo.getAllowBetStatus();
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
