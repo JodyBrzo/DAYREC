@@ -13,31 +13,23 @@
      </div>
      <div class="navbar-nav">
 
-          {{!-- If user is not logged in   --}}
-          {{#if !window.user.authenticated }}
+          {{!-- If user is logged in, show in navbar --}}
+          {{#if req.isAuthenticated }}
+              <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link" href="/place-bet">PLACE BET</a>
+              <a class="nav-link" href="/logout">LOGOUT</a> 
+              {{#if req.user.isAdmin }}
+                <a class="nav-link" href="/admin-update">ADMIN</a>
+              {{/if}}  
+          {{!-- If user is not logged in, show in navbar --}}
+          {{else}}
               <a class="nav-link" href="/about">ABOUT</a>
               <a class="nav-link" href="/">LOGIN</a>
               <a class="nav-link" href="/signup">SIGN UP</a>
           {{/if}}
 
-          {{!-- If user is an administrator but not logged in --}}
-          {{#if !window.user.authenticated && window.user.isAdmin}}
-              <a class="nav-link" href="/">EXIT ADMIN</a>
-          {{/if}}
-
-          {{!-- If user is logged in and is not admin --}}
-          {{#if window.user.authenticated && !window.user.isAdmin}}
-              <a class="nav-link" href="/about">ABOUT</a>
-              <a class="nav-link" href="/place-bet">PLACE BET</a>
-              <a class="nav-link" href="/logout">LOGOUT</a> 
-          {{/if}}
-
-          {{!-- If user is logged in and administrator --}}
-          {{#if window.user.authenticated && window.user.isAdmin}}
-              <a class="nav-link" href="/logout">LOGOUT</a>
-          {{/if}}
-     
      </div>
    </div>
  </nav>
 
+req.user.isAdmin
