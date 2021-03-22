@@ -33,4 +33,8 @@ function recordData(screenshareMisses, recordingMisses) {
         .catch(function (err) {
             console.log(err);
         });
-}
+};
+
+
+
+
