@@ -7,7 +7,7 @@ const passport = require("./config/passport");
 const path = require("path");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8083;
 const db = require("./models");
 
 // Creating express app and configuring middleware needed for authentication
@@ -38,6 +38,11 @@ app.use(passport.session());
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+
+//Set Handlebars
+const exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
