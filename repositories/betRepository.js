@@ -21,7 +21,7 @@ const getBet = userId => {
   if (userId) {
     db.Bet.findOne({
       where: {
-        id: userId,
+        userId: userId,
         createdAt: {
           [Op.gte]: new Date()
         }
@@ -41,7 +41,7 @@ const getBetsTotalCoins = userId => {
   if (userId) {
     db.Bet.sum("awardedCoins", {
       where: {
-        id: userId
+        userId: userId
       }
     })
       .then(bets => {

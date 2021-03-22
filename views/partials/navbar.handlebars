@@ -1,0 +1,43 @@
+  <nav class="navbar navbar-expand-lg navbar-dark text-light">
+     <h3 class="logo">D</h3>
+    <h3><a class="nav-brand" href="/">dayrec</a></h3>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="nav navbar-nav ml-auto text-light text-right">
+       {{#each data.links}}
+       <a class="nav-link {{#if this.active}}active{{/if}}" href="/layouts/{{this.link}}">{{this.fileName}}</a>
+       {{/each}}
+     </div>
+     <div class="navbar-nav">
+
+          {{!-- If user is not logged in   --}}
+          {{#if !window.user.authenticated }}
+              <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link" href="/">LOGIN</a>
+              <a class="nav-link" href="/signup">SIGN UP</a>
+          {{/if}}
+
+          {{!-- If user is an administrator but not logged in --}}
+          {{#if !window.user.authenticated && window.user.isAdmin}}
+              <a class="nav-link" href="/">EXIT ADMIN</a>
+          {{/if}}
+
+          {{!-- If user is logged in and is not admin --}}
+          {{#if window.user.authenticated && !window.user.isAdmin}}
+              <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link" href="/place-bet">PLACE BET</a>
+              <a class="nav-link" href="/logout">LOGOUT</a> 
+          {{/if}}
+
+          {{!-- If user is logged in and administrator --}}
+          {{#if window.user.authenticated && window.user.isAdmin}}
+              <a class="nav-link" href="/logout">LOGOUT</a>
+          {{/if}}
+     
+     </div>
+   </div>
+ </nav>
+

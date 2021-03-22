@@ -8,6 +8,7 @@ const createUser = (studentName, email, password) => {
       password
     })
       .then(user => {
+        delete user.password; //remove the password before passing it back
         return user;
       })
       .catch(err => {
@@ -24,6 +25,7 @@ const deleteUser = userId => {
       }
     })
       .then(user => {
+        delete user.password; //remove the password before passing it back
         return user;
       })
       .catch(err => {
@@ -46,6 +48,7 @@ const updateUser = (userId, studentName, email) => {
       }
     )
       .then(user => {
+        delete user.password; //remove the password before passing it back
         return user;
       })
       .catch(err => {
@@ -54,9 +57,11 @@ const updateUser = (userId, studentName, email) => {
   }
 };
 
+//returns ONE user: id, name, email, createdAt and updatedAt
 const getUser = userId => {
   if (userId) {
     db.User.findOne({
+      attributes: ["id", "studentName", "email", "createdAt", "updatedAt"],
       where: {
         id: userId
       }
@@ -70,8 +75,11 @@ const getUser = userId => {
   }
 };
 
+//returns ALL users: id, name, email, createdAt and updatedAt
 const getUsers = () => {
-  db.User.findAll({})
+  db.User.findAll({
+    attributes: ["id", "studentName", "email", "createdAt", "updatedAt"]
+  })
     .then(users => {
       return users;
     })
