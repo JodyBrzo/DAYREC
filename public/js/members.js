@@ -6,8 +6,29 @@
 //   });
 // });
 
-
+const { response } = require("express");
 
 //routes for pages
 
-//place bet buttons takes you to place bet route
+//Get bet made today
+function getUserBetToday() {
+  const userID = window.user.id;
+  fetch(`/api/bet?userId=${userID}`)
+    .then((userID) => response.json())
+    .then((data) => {})
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+getUserBetToday();
+
+//Get historical bets from user
+function getUserBetsAll() {
+  const userID = window.user.id;
+  $.get(`/api/bets?userId=${userID}`)
+    .then((userWithBets) => {})
+    .catch((err) => {
+      console.log(err);
+    });
+}
