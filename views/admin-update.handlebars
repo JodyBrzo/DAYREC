@@ -1,0 +1,30 @@
+  {{> navbar }}
+<div class="admin-update-container container">
+  {{> welcome }} 
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+        <h2 class="record-class-data">Record Class Data</h2>
+        <form class="record-data">
+          <div class="form-group">
+            <label for="screenshare-misses"># Screenshare Misses</label>
+            <input type="text" class="form-control" id="screenshare-misses" placeholder="Enter Actual Screenshare Misses">
+          </div>
+          <div class="form-group">
+            <label for="recording-misses"># Recording Misses</label>
+            <input type="text" class="form-control mb-4" id="recording-misses" placeholder="Enter Actual Recording Misses">
+          </div>
+           <div class="row">
+            <input type="checkbox" id="allow-bets" name="allow-bets" value="false">
+            <label for="allow-bets" style="padding-left: 10px; font-size: 1.5rem">Allow Bets</label>
+          </div>
+          <div class="row">
+            <button type="submit" class="update-button submit-button btn btn-default mt-3"
+            id="update-button">UPDATE</button>
+            <button type="submit" class="assign-payouts-button submit-button btn btn-default mt-3"
+            id="assign-payouts-button">ASSIGN PAYOUTS</button>
+          </div>        
+          </form>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="/public/js/admin-update.js"></script>

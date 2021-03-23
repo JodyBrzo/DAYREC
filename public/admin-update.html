@@ -27,40 +27,59 @@
   <nav class="navbar navbar-expand-md navbar-dark text-light">
     <h3 class="logo">D</h3>
     <h3><a class="nav-brand" href="members.html">dayrec</a></h3>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="nav navbar-nav ml-auto text-light text-right">
-        <a class="nav-link" href="about.html">ABOUT</a>
+        <a class="nav-link active" href="about.html">ABOUT</a>
         <a class="nav-link" href="place-bet.html">PLACE BET</a>
-        <a class="nav-link active" href="bet-info.html">BET INFO</a>
-        <a class="nav-link" href="/logout">LOGOUT</a>
+        <a class="nav-link" href="/logout">LOGOUT</a>      
       </div>
     </div>
   </nav>
-  <div class="bet-info-container container">
-    <div class="row">
-      <div class="col text-right">
-        <span class="wallet"><img src="https://lh3.googleusercontent.com/proxy/A1yTM5J9UovHJT6eDna5hB1Ft61sTbU0uVjvW9eGo5OXAaz97_40bBqR6RnNVjZ5aWN-ZiILHyyJT_-i4ato2h5L3ANo2YerBG-F6meJY0Hs-6wgMiHfnZbFfBmfZA"> Wallet</span>
-      </div>
-    </div>
+  <div class="admin-update-container container">
     <div class="row">
       <div class="col text-left">
         <h1>WELCOME TO DAYREC <span class="member-name"></span></h1>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <h2 class="bet-information">Bet Information</h2>
+      <div class="col-md-6 col-sm-12">
+        <h2 class="record-class-data">Record Class Data</h2>
+        <form class="record-data">
+          <div class="form-group">
+            <label for="screenshare-misses"># Screenshare Misses</label>
+            <input type="text" class="form-control" id="screenshare-misses"
+              placeholder="Enter Actual Screenshare Misses">
+          </div>
+          <div class="form-group">
+            <label for="recording-misses"># Recording Misses</label>
+            <input type="text" class="form-control mb-4" id="recording-misses"
+              placeholder="Enter Actual Recording Misses">
+          </div>
+          <div class="row">
+            <input type="checkbox" id="allow-bets" name="allow-bets" value="false">
+            <label for="allow-bets" style="padding-left: 10px; font-size: 1.5rem">Allow Bets</label>
+          </div>
+          <div class="row">
+            <button type="submit" class="update-button submit-button btn btn-default mt-3"
+            id="update-button">UPDATE</button>
+            <button type="submit" class="assign-payouts-button submit-button btn btn-default mt-3"
+            id="assign-payouts-button">ASSIGN PAYOUTS</button>
+          </div>
+          </form>
       </div>
     </div>
   </div>
+
   <footer class="footer-margin fixed-bottom card-footer bg-dark text-light text-center footer-position"><a
-    href="https://github.com/JodyBrzo/DAYREC" class="github" target="_blank"><img
-      src="https://www.sferalabs.cc/wp-content/uploads/github-logo-white.png" alt="Github Logo" id="github"></a>
-</footer>
+      href="https://github.com/JodyBrzo/DAYREC" class="github" target="_blank"><img
+        src="https://www.sferalabs.cc/wp-content/uploads/github-logo-white.png" alt="Github Logo" id="github"></a>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/bet-info.js"></script>
+  <script type="text/javascript" src="js/place-bet.js"></script>
+
+</body>
