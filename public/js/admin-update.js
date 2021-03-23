@@ -33,3 +33,15 @@ function recordData(screenshareMisses, recordingMisses) {
     console.log(err);
   });
 }
+
+// Allow bets checkbox functionality
+$("#allow-bets").change(function() {
+  fetch("/api/allowBets", {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ allowBetStatus: this.checked })
+  }).then(response => {});
+});
