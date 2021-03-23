@@ -33,7 +33,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="nav navbar-nav ml-auto text-light text-right">
-        <a class="nav-link" href="/logout">LOGOUT</a>
+        <a class="nav-link active" href="about.html">ABOUT</a>
+        <a class="nav-link" href="place-bet.html">PLACE BET</a>
+        <a class="nav-link" href="/logout">LOGOUT</a>      
       </div>
     </div>
   </nav>
@@ -57,9 +59,17 @@
             <input type="text" class="form-control mb-4" id="recording-misses"
               placeholder="Enter Actual Recording Misses">
           </div>
-          <button type="submit" class="update-button submit-button btn btn-default mt-3"
+          <div class="row">
+            <input type="checkbox" id="allow-bets" name="allow-bets" value="false">
+            <label for="allow-bets" style="padding-left: 10px; font-size: 1.5rem">Allow Bets</label>
+          </div>
+          <div class="row">
+            <button type="submit" class="update-button submit-button btn btn-default mt-3"
             id="update-button">UPDATE</button>
-        </form>
+            <button type="submit" class="assign-payouts-button submit-button btn btn-default mt-3"
+            id="assign-payouts-button">ASSIGN PAYOUTS</button>
+          </div>
+          </form>
       </div>
     </div>
   </div>
