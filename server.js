@@ -54,6 +54,23 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+//Set Handlebars
+
+// Requiring our routes
+//SHOULDN"T THIS JUST BE FOR THE CONTROLLER? SHOULD LOOK LIKE THIS?
+// require("./controllers/bets_controller.js")(app);
+// require("./controllers/recordlogs_controller.js")(app);
+// require("./controllers/users_controller.js")(app);
+//OR
+// require("./controllers/")(app);
+
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
+// require("./routes/user-route.js")(app);
+
+//Set Handlebars
+
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

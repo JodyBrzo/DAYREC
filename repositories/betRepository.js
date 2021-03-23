@@ -1,3 +1,5 @@
+const Sequelize = require('sequelize');
+
 const db = require("../models/");
 
 const addBet = (userId, guessRecord, guessShare) => {
@@ -18,6 +20,7 @@ const addBet = (userId, guessRecord, guessShare) => {
 
 //get bet for today
 const getBet = userId => {
+  const Op = Sequelize.Op;
   if (userId) {
     db.Bet.findOne({
       where: {
@@ -28,7 +31,8 @@ const getBet = userId => {
       }
     })
       .then(bet => {
-        return bet;
+        console.log(JSON.parse(JSON.stringify(bet)));
+        return JSON.parse(JSON.stringify(bet));
       })
       .catch(err => {
         throw err;
