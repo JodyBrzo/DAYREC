@@ -12,6 +12,10 @@ const path = require("path");
 const PORT = process.env.PORT || 8083;
 const db = require("./models");
 
+// Import routes and give the server access to them.
+const routes = require('./controllers');
+
+
 const systemStatusRepo = require("./repositories/systemStatusRepository");
 global.systemStatus = systemStatusRepo.getAllowBetStatus();
 
@@ -41,7 +45,7 @@ app.engine(
     partialsDir: app.get("views") + "/partials"
   }).engine
 );
-app.set("view engine", "handlebars");
+
 
 // We need to use sessions to keep track of our user's login status
 app.use(
