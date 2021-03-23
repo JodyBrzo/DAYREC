@@ -22,10 +22,14 @@ app.use(express.json());
 app.use(express.static("public"));
 //Middleware for user authentication
 app.use((req, res, next) => {
+  res.locals.user = req.user;
   res.locals.login = req.isAuthenticated();
   next();
 });
-res.locals.user = req.user;
+
+// Delete two lines below if not needed
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
 // Handlebars views
 app.set("views", path.join(__dirname, "views"));
