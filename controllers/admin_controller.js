@@ -59,10 +59,6 @@ module.exports = () => {
   const parseBoolean = string => {
     const bool = (() => {
       switch (false) {
-      case string.toLowerCase() !== "true":
-        return true;
-      case string.toLowerCase() !== "false":
-        return false;
         case string.toLowerCase() !== "true":
           return true;
         case string.toLowerCase() !== "false":
