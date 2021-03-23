@@ -17,7 +17,7 @@ module.exports = () => {
   });
 
   //returns the data for the memebrs page
-  router.get("/api/todaysUserBet", (req, res) => {
+  router.get("/api/members", (req, res) => {
     const bet = betRepo.getBet(req.user.id);
     const userTotalCoins = betRepo.getBetsTotalCoins(req.user.id);
     const recordLog = recordLogRepo.getRecordLog();

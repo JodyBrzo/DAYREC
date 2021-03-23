@@ -20,6 +20,12 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+//Middleware for user authentication
+app.use((req, res, next) => {
+  res.locals.login = req.isAuthenticated();
+  next();
+});
+res.locals.user = req.user;
 
 // Handlebars views
 app.set("views", path.join(__dirname, "views"));
@@ -39,15 +45,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Requiring our routes
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
-
-//Set Handlebars
-const exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
