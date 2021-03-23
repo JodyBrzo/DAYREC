@@ -2,6 +2,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
+const betRepo = require("../repositories/betRepository");
+const recordLogRepo = require("../repositories/recordLogRepository");
+
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -19,6 +22,7 @@ module.exports = function (app) {
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
     db.User.create({
+      studentName: req.body.studentName,
       email: req.body.email,
       password: req.body.password
     })
@@ -50,5 +54,22 @@ module.exports = function (app) {
       });
     }
 
+  });
+
+  app.get("/api/todaysUserBet", (req, res) => {
+    console.log(req.user);
+    const bet = betRepo.getBet(req.user.id);
+    const userTotalCoins = betRepo.getBetsTotalCoins(req.user.id);
+    const recordLog = recordLogRepo.getRecordLog();
+    const data = {
+      studentName: req.user.studentName,
+      todaysGuess: bet,
+      totalCoins: userTotalCoins,
+      actualToday: recordLog
+    };
+    console.log(bet);
+    console.log(userTotalCoins);
+    console.log(recordLog);
+    res.json(data);
   });
 };
