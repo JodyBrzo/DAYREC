@@ -1,3 +1,5 @@
+global.systemStatus = undefined;
+
 // Requiring necessary npm package
 const express = require("express");
 const session = require("express-session");
@@ -7,8 +9,11 @@ const passport = require("./config/passport");
 const path = require("path");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8083;
 const db = require("./models");
+
+const systemStatusRepo = require("./repositories/systemStatusRepository");
+global.systemStatus = systemStatusRepo.getAllowBetStatus();
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
@@ -35,9 +40,21 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Set Handlebars
+
 // Requiring our routes
+//SHOULDN"T THIS JUST BE FOR THE CONTROLLER? SHOULD LOOK LIKE THIS?
+// require("./controllers/bets_controller.js")(app);
+// require("./controllers/recordlogs_controller.js")(app);
+// require("./controllers/users_controller.js")(app);
+//OR
+// require("./controllers/")(app);
+
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+// require("./routes/user-route.js")(app);
+
+//Set Handlebars
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
