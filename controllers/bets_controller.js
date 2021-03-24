@@ -1,38 +1,66 @@
-const express = require("express");
-const router = express.Router();
-
 const betRepo = require("../repositories/betRepository");
 const recordLogRepo = require("../repositories/recordLogRepository");
 
-module.exports = () => {
+module.exports = app => {
   // Get all data from database
   //--------------------front end js files need to match these names req.body._______
-  router.post("/api/bet", (req, res) => {
-    const bet = betRepo.addBet(
-      req.user.id,
-      req.body.guessRecord,
-      req.body.guessShare
-    );
-    res.json(bet);
+  app.post("/api/bet", (req, res) => {
+    betRepo
+      .getBet(req.user)
+      .then(betToday => {
+        if (!betToday || !betToday.dataValues) {
+          betRepo
+            .addBet(req.user, req.body.guessRecord, req.body.guessShare)
+            .then(bet => {
+              res.json(bet);
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        } else {
+          res.json(betToday.dataValues);
+        }
+      })
+      .catch(err => {
+        res.json(err);
+      });
   });
 
   //returns the data for the memebrs page
-  router.get("/api/members", (req, res) => {
-    const bet = betRepo.getBet(req.user.id);
-    const userTotalCoins = betRepo.getBetsTotalCoins(req.user.id);
-    const recordLog = recordLogRepo.getRecordLog();
+  app.get("/api/members", (req, res) => {
     const data = {
-      studentName: req.user.studentName,
-      todaysGuess: bet,
-      totalCoins: userTotalCoins,
-      actualToday: recordLog
+      studentName: req.user.studentName
     };
-    res.json(data);
+
+    betRepo
+      .getBet(req.user)
+      .then(bet => {
+        data.todaysGuess = bet ? bet : null;
+
+        betRepo.getBetsTotalCoins(req.user).then(totalCoins => {
+          data.userTotalCoins = totalCoins ? totalCoins : null;
+
+          recordLogRepo.getRecordLog().then(recordLog => {
+            data.actualToday = recordLog ? recordLog : null;
+
+            res.json(data);
+          });
+        });
+      })
+      .catch(err => {
+        res.json(err);
+      });
   });
 
   //return all bets for a specific user
-  router.get("/api/allUserBets", (req, res) => {
-    const bets = betRepo.getBets(req.user.id);
-    res.json(bets);
+  app.get("/api/allUserBets", (req, res) => {
+    betRepo
+      .getBets(req.user.id)
+      .then(bets => {
+        res.json(bets);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   });
 };

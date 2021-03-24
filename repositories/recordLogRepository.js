@@ -1,101 +1,71 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
+const db = require("../models/");
 const Op = Sequelize.Op;
 
-const db = require("../models/");
-
 const addRecordLog = (actualRecord, actualShare) => {
-  if (actualRecord && actualShare) {
-    db.RecordLog.create({
-      actualRecord,
-      actualShare
-    })
-      .then(recordLog => {
-        return recordLog;
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+  return db.RecordLog.create({
+    actualRecord,
+    actualShare
+  });
 };
 
 //get RecordLog for today
 const getRecordLog = () => {
-  db.RecordLog.findOne({
+  const todaysDate = new Date();
+  todaysDate.setHours(0, 0, 0, 0); // Set time for 12:00AM
+
+  return db.RecordLog.findOne({
     where: {
       createdAt: {
-        [Op.gte]: new Date()
+        [Op.gte]: todaysDate
       }
     }
-  })
-    .then(recordLog => {
-      return recordLog;
-    })
-    .catch(err => {
-      throw err;
-    });
+  });
 };
 
 //returns all the Record Logs and sorts ascending by createdAt
 const getAllRecordLogs = () => {
-  db.RecordLog.findAll({
+  return db.RecordLog.findAll({
     order: ["createdAt"]
-  })
-    .then(recordLog => {
-      return recordLog;
-    })
-    .catch(err => {
-      throw err;
-    });
+  });
 };
 
-//update the actual record by id
-const updateActualRecord = (recordId, actualRecord) => {
-  if (id && actualRecord) {
-    db.RecordLog.update(
-      {
-        actualRecord
+//update the actual record and share by id
+const updateActualRecordLog = (recordId, actualRecord, actualShare) => {
+  return db.RecordLog.update(
+    {
+      actualRecord,
+      actualShare
+    },
+    {
+      where: {
+        id: recordId
       },
-      {
-        where: {
-          id: recordId
-        }
-      }
-    )
-      .then(recordLog => {
-        return recordLog;
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+      returning: true,
+      plain: true
+    }
+  );
 };
 
-//update the actual share by id
-const updateActualShare = (recordId, actualShare) => {
-  if (id && actualShare) {
-    db.RecordLog.update(
-      {
-        actualShare
-      },
-      {
-        where: {
-          id: recordId
-        }
-      }
-    )
-      .then(recordLog => {
-        return recordLog;
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
-};
+// //update the actual share by id
+// const updateActualShare = (recordId, actualShare) => {
+//   if (id && actualShare) {
+//     return db.RecordLog.update(
+//       {
+//         actualShare
+//       },
+//       {
+//         where: {
+//           id: recordId
+//         }
+//       }
+//     );
+//   }
+// };
 
 module.exports = {
   addRecordLog: addRecordLog,
   getRecordLog: getRecordLog,
   getAllRecordLogs: getAllRecordLogs,
-  updateActualRecord: updateActualRecord,
-  updateActualShare: updateActualShare
+  updateActualRecordLog: updateActualRecordLog
 };
