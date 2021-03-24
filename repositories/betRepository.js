@@ -52,12 +52,9 @@ const getAllBets = () => {
 };
 
 const getBets = user => {
-  return db.User.findOne({
+  return db.Bet.findAll({
     where: {
-      id: user.id
-    },
-    include: {
-      model: db.Bet
+      UserId: user.id
     }
   });
 };

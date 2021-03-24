@@ -55,7 +55,7 @@ module.exports = app => {
   //return all bets for a specific user
   app.get("/api/allUserBets", (req, res) => {
     betRepo
-      .getBets(req.user.id)
+      .getBets(req.user)
       .then(bets => {
         res.json(bets);
       })
