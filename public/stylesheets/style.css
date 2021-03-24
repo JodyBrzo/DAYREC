@@ -359,6 +359,8 @@ footer {
   height: 60px;
   position: absolute;
 }
+
+/* Media screen */
 @media screen and (max-width: 768px) {
   .welcome {
     border-right: none;
