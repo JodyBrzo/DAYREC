@@ -27,7 +27,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Import controllerss
+// Import controllers
 require("./controllers/admin_controller.js")(app);
 require("./controllers/bets_controller.js")(app);
 require("./controllers/users_controller.js")(app);

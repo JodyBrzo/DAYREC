@@ -3,37 +3,30 @@
   padding-left: 4rem;
   margin-top: 5%;
   display: inline-block;
-
 }
-
 .login-form {
   padding-left: 4rem;
   margin-top: 5%;
   display: inline-block;
 }
-
 /* Navbar styling */
 .navbar {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-
 .float-right {
   float: right;
 }
-
 /* Coin image */
 img {
   height: 3rem;
 }
-
 /* Logo D */
 .logo {
   font-family: 'Press Start 2P', cursive;
   font-size: 4rem;
   color: rgb(219, 63, 89);
 }
-
 /* DAYREC in header */
 h3 {
   text-align: left;
@@ -52,7 +45,6 @@ h3 {
   text-decoration: none;
   color: whitesmoke;
 }
-
 /* Navbar links */
 .nav-link {
   text-decoration: none;
@@ -73,12 +65,10 @@ h3 {
 .navbar-toggler-icon {
   margin-right: 1rem;
 }
-
 /* Headers styling */
 body {
   background-color: black;
 }
-
 /* User wallet */
 .wallet {
   color: whitesmoke;
@@ -87,21 +77,18 @@ body {
   font-size: 2.25rem;
   margin-right: 10rem;
 }
-
 h1 {
   color: whitesmoke;
   font-family: 'Lato', sans-serif;
   font-weight: thin;
   margin-top: 2.75rem;
 }
-
 h2 {
   color: whitesmoke;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: 2.25rem;
 }
-
 /* Submit buttons for login and signup*/
 .submit-button {
   font-family: 'Roboto', sans-serif;
@@ -117,7 +104,6 @@ h2 {
   text-align: center;
   margin-bottom: 15rem;
 }
-
 /* About page */
 .about-dayrec {
   font-family: 'Roboto', sans-serif;
@@ -127,11 +113,9 @@ h2 {
   margin-bottom: 2rem;
   text-align: center;
 }
-
 .about-container {
   margin-bottom: 15rem;
 }
-
 .about-body {
   color: whitesmoke;
   font-family: 'Lato', sans-serif;
@@ -139,7 +123,6 @@ h2 {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
 #about-desc {
   color: whitesmoke;
   font-family: 'Lato', sans-serif;
@@ -147,14 +130,12 @@ h2 {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
 /* Your Guess Today and Actual Today */
 .today-data {
   background-color: rgb(8, 8, 8);
   padding-top: 2rem;
   padding-bottom: 20rem;
 }
-
 /* Welcome on login/signup */
 #welcome {
   font-size: 8rem;
@@ -162,7 +143,6 @@ h2 {
   font-family: 'Roboto Condensed', sans-serif;  
   margin-bottom: 2rem;
 }
-
 /* Welcome on login/signup including intro  */
 .welcome {
   margin-top: 2%;
@@ -172,14 +152,12 @@ h2 {
   border-right: 1px solid whitesmoke;
   ;
 }
-
 .dayrec-full-name {
   color: white;
   font-size: 3rem;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
 }
-
 /* Welcome intro */
 #intro-desc {
   color: whitesmoke;
@@ -188,16 +166,12 @@ h2 {
   margin-left: 2rem;
   margin-right: 2rem;
 }
-
-
-
 /* Login and sign up forms styling*/
 label {
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   color: whitesmoke;
 }
-
 /* Allow bets checkbox */
 #allow-bets {
   margin-left: 2rem;
@@ -205,39 +179,31 @@ label {
   font-size: 6rem;
   font-weight: black;
 }
-
 .form-control {
   font-size: 1.75rem;
   font-family: 'Roboto', sans-serif;
   color: black;
-
 }
-
 .form-group {
   width: 400px;
   padding-right: 2rem;
 }
-
 /* Input fields */
 input {
   margin-bottom: 2rem;
 }
-
 /* Login link */
 #login-link {
   font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
   color: whitesmoke;
 }
-
 /* Admin login link from user login */
 #admin-link {
   color: whitesmoke;
   font-size: 1.5rem;
   font-family: 'Roboto', sans-serif;
 }
-
-
 /* Members page */
 .place-your-bet {
   font-family: 'Roboto', sans-serif;
@@ -246,7 +212,6 @@ input {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
-
 /* Historical Rankings */
 .historical-rankings {
   margin-top: 4rem;
@@ -256,7 +221,6 @@ input {
   font-weight: bold;
   font-size: 2.25rem;
 }
-
 /* Class rankings */
 .ranking {
   font-family: 'Roboto', sans-serif;
@@ -265,7 +229,6 @@ input {
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
-
 /* Place bet button */
 .place-bet-button {
   font-family: 'Roboto', sans-serif;
@@ -283,7 +246,6 @@ input {
   margin-right: auto;
   margin-bottom: 2rem;
 }
-
 /* Place bet link button on members page */
 .place-bet-link {
   font-family: 'Roboto', sans-serif;
@@ -300,7 +262,6 @@ input {
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
-
 /* Admin page */
 .record-class-data {
   font-family: 'Roboto', sans-serif;
@@ -309,8 +270,37 @@ input {
   margin-top: 4rem;
   margin-bottom: 2rem;
 }
-
 /* Assign Payouts button on admin page */
+.allow-betting-button-off {
+  font-family: 'Roboto', sans-serif;
+  height: 40px;
+  width: 180px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid rgb(219, 63, 89);
+  background: rgb(0, 0, 0);
+  color: whitesmoke;
+  border-radius: 40px;
+  text-align: center;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
+.allow-betting-button-on {
+  font-family: 'Roboto', sans-serif;
+  height: 40px;
+  width: 180px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 3px solid rgb(219, 63, 89);
+  background: rgb(219, 63, 89);
+  color: whitesmoke;
+  border-radius: 40px;
+  text-align: center;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
+}
 .assign-payouts-button {
   font-family: 'Roboto', sans-serif;
   height: 40px;
@@ -326,12 +316,11 @@ input {
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
-
 /* Update button on admin page */
 .update-button {
   font-family: 'Roboto', sans-serif;
   height: 40px;
-  width: 100px;
+  width: 180px;
   font-size: 1.5rem;
   font-weight: bold;
   letter-spacing: 1px;
@@ -343,7 +332,6 @@ input {
   margin-left: 2rem;
   margin-bottom: 2rem;
 }
-
 /* Destry image */
 .image-cropper {
   width: 200px;
@@ -361,19 +349,16 @@ margin: 0 auto;
 height: 100%;
 width: auto;
 }
-
 #github {
   align-items: center;
   height: 4rem;
 }
-
 footer {
   background-color: black;
   color: whitesmoke;
   height: 60px;
   position: absolute;
 }
-
 @media screen and (max-width: 768px) {
   .welcome {
     border-right: none;
