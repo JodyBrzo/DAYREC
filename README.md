@@ -11,11 +11,11 @@ DAYREC is a full-stack web application built on Node.JS, JavaScript, HTML5, CSS,
 Technologies used within Node.JS include but are not limited to:  bcryptjs, chartjs,  express, express-handlebars, mysql2, passport, sequelize.
 
 ### Here is the final product:
-![DAYREC: Login](https://github.com/zdjeffers/BuildABurger/blob/main/public/assets/img/Screenshot%202021-03-10%20223807.png)
+![DAYREC: Login](https://github.com/JodyBrzo/DAYREC/blob/main/public/assets/Dayrec_login.png)
 
-![DAYREC: About](https://github.com/zdjeffers/BuildABurger/blob/main/public/assets/img/Screenshot%202021-03-10%20223807.png)
+![DAYREC: About](https://github.com/JodyBrzo/DAYREC/blob/main/public/assets/dayrec_about.png)
 
-![DAYREC: Members Page](https://github.com/zdjeffers/BuildABurger/blob/main/public/assets/img/Screenshot%202021-03-10%20223807.png)
+![DAYREC: Members Page](https://github.com/JodyBrzo/DAYREC/blob/main/public/assets/members_page.png)
 
 ### Deployed Site:
 [DAYREC](/)
