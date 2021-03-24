@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-lg navbar-dark text-light">
+<nav class="navbar navbar-expand-lg navbar-dark text-light">
      <h3 class="logo">D</h3>
     <h3><a class="nav-brand" href="/">dayrec</a></h3>
  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -12,24 +12,25 @@
        {{/each}}
      </div>
      <div class="navbar-nav">
-
           {{!-- If user is logged in, show in navbar --}}
-          {{#if req.isAuthenticated }}
+          {{#if user }}
               <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link" href="/members">MEMBER</a>
+              {{#if userData.allowBets}}
               <a class="nav-link" href="/place-bet">PLACE BET</a>
-              <a class="nav-link" href="/logout">LOGOUT</a> 
-              {{#if req.user.isAdmin }}
+              {{/if}}
+              {{#if user.isAdmin }}
                 <a class="nav-link" href="/admin-update">ADMIN</a>
               {{/if}}  
+              <a class="nav-link" href="/logout">LOGOUT</a> 
           {{!-- If user is not logged in, show in navbar --}}
           {{else}}
               <a class="nav-link" href="/about">ABOUT</a>
+              {{#if isNotRoot }}
               <a class="nav-link" href="/">LOGIN</a>
+              {{/if}}  
               <a class="nav-link" href="/signup">SIGN UP</a>
           {{/if}}
-
      </div>
    </div>
  </nav>
-
-req.user.isAdmin
