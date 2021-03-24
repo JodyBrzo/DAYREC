@@ -1,27 +1,36 @@
-  {{> navbar }}
+{{> navbar }}
 <div class="place-bet-container container">
   {{> wallet }}
   {{> welcome }} 
   <div class="row">
-      <div class="col">
+      <div class="col-6">
           <h2 class="place-your-bet">Place Your Bet</h2>
           <form class="bet">
             <div class="form-group">
               <label for="screenshare-bet"># Screenshare Misses</label>
-              <input type="text" class="form-control" id="screenshare-guess" placeholder="Enter Your Guess">
+              <input type="text" class="form-control" id="screenshare-guess" placeholder="Enter Your Guess" disabled="{{userData.allowBetting}}">
             </div>
             <div class="form-group">
               <label for="recording-bet"># Recording Misses</label>
-              <input type="text" class="form-control mb-4" id="recording-guess" placeholder="Enter Your Guess">
+              <input type="text" class="form-control mb-4" id="recording-guess" placeholder="Enter Your Guess" disabled="{{userData.allowBetting}}">
             </div>
-            <button type="submit" class="place-bet-button submit-button btn btn-default mt-3" id="place-bet">PLACE BET</button>
+            <button type="submit" class="place-bet-button submit-button btn btn-default mt-3" id="place-bet" disabled="{{userData.allowBetting}}">PLACE BET</button>
           </form>
       </div>
-    </div>
+      <div class="col-6">
+         <h2 class="place-your-bet">Your Bet Today</h2>
+        <div class="wallet">Total Records: <span class="wallet">{{ userData.guessRecord }}</span></div>
+        <div class="wallet">Total Shares: <span class="wallet">{{ userData.guessShare }}</span></div>
+      </div>
+  </div>
   <div class="row">
       <div class="col-md-12 ">
         <h2 class="historical-rankings text-center">Historical Data</h2>
       </div>
+      <div>
+      </div>
     </div>
 </div>
-<script type="text/javascript" src="/public/js/place-bet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script type="text/javascript" src="/js/place-bet.js"></script>
