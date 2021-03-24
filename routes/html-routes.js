@@ -53,7 +53,7 @@ module.exports = function(app) {
       guessShare: 0,
       totalCoins: 0,
       bettingDisabled: false,
-      allowBets: systemStatusRepo.getAllowBetStatus().allowBets
+      allowBets: systemStatusRepo.getAllowBetStatus().allowBets ? "" : "disabled"
     };
     betRepo
       .getBet(req.user)
