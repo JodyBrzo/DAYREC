@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 8083;
 const db = require("./models");
 
 // Import routes and give the server access to them.
-const routes = require('./controllers');
 
 
 const systemStatusRepo = require("./repositories/systemStatusRepository");
@@ -42,10 +41,9 @@ app.engine(
   exphbs.create({
     defaultLayout: "main",
     layoutsDir: app.get("views") + "/layouts",
-    partialsDir: app.get("views") + "/partials"
+    partialsDir: app.get("views") + "/partials",
   }).engine
 );
-
 
 // We need to use sessions to keep track of our user's login status
 app.use(
@@ -54,7 +52,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+require("./controllers/admin_controller.js")(app);
+require("./controllers/bets_controller.js")(app);
+require("./controllers/users_controller.js")(app);
 //Set Handlebars
 
 // Requiring our routes
