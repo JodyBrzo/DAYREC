@@ -1,67 +1,154 @@
-const express = require("express");
-const router = express.Router();
-
-const systemStatusRepo = require("../repositories/systemStatusRepository");
+const betRepo = require("../repositories/betRepository");
 const recordLogRepo = require("../repositories/recordLogRepository");
+const systemStatusRepo = require("../repositories/systemStatusRepository");
 
-module.exports = () => {
-  router.put("/api/allowBets", (req, res) => {
+module.exports = app => {
+  app.put("/api/allowBets", (req, res) => {
     if (req.user.isAdmin) {
+      const allowBetStatus = parseBoolean(req.body.allowBetStatus);
       systemStatusRepo.setAllowBetStatus(
-        req.body.allowBetStatus //admin field should be called allowBetStatus
+        allowBetStatus //admin field should be called allowBetStatus
       );
-      if (parseBoolean(req.body.allowBetStatus)) {
-        const recordLogToday = recordLogRepo.getRecordLog();
-        if (!recordLogToday) {
-          recordLogToday = recordLogRepo.addRecordLog(0, 0);
-        }
-        res.json(recordLogToday);
+      if (allowBetStatus) {
+        recordLogRepo
+          .getRecordLog()
+          .then(recordLogToday => {
+            if (!recordLogToday) {
+              recordLogRepo
+                .addRecordLog(0, 0)
+                .then(recordLog => {
+                  res.json(recordLog);
+                })
+                .catch(err => {
+                  res.json(err);
+                });
+            } else {
+              res.json(recordLogToday);
+            }
+          })
+          .catch(err => {
+            res.json(err);
+          });
       }
-      res.status(200);
+      res.json({ allowBetStatus: allowBetStatus });
     } else {
       res.status(405);
     }
   });
 
-  router.put("/api/setActualRecord", (req, res) => {
+  //done
+  app.put("/api/setActualRecordLog", (req, res) => {
     if (req.user.isAdmin) {
-      const recordLog = recordLogRepo.updateActualRecord(
-        req.body.recordId,
-        req.body.actualRecord
-      );
-      res.json(recordLog);
+      recordLogRepo
+        .updateActualRecordLog(
+          req.body.recordId,
+          req.body.actualRecord,
+          req.body.actualShare
+        )
+        .then(recordLog => {
+          console.log(recordLog);
+          recordLogRepo.getRecordLog().then(recordLog => {
+            res.json(recordLog);
+          });
+        })
+        .catch(err => {
+          res.json(err);
+        });
     } else {
       res.status(405);
     }
   });
 
-  router.put("/api/setActualShare", (req, res) => {
+  //
+  app.get("/api/assignUserPayouts", (req, res) => {
     if (req.user.isAdmin) {
-      const recordLog = recordLogRepo.updateActualShare(
-        req.body.recordId,
-        req.body.actualShare
-      );
-      res.json(recordLog);
+      betRepo
+        .getAllBets()
+        .then(bets => {
+          const originalBets = bets.map(x => {
+            return {
+              id: x.id,
+              UserId: x.UserId,
+              awardedCoins: x.awardedCoins,
+              createdAt: x.createdAt,
+              updatedAt: x.updatedAt,
+              guessRecord: x.guessRecord,
+              guessShare: x.guessShare
+            };
+          });
+          recordLogRepo
+            .getAllRecordLogs()
+            .then(recordLogs => {
+              recordLogs.forEach(record => {
+                const recordDate = record.createdAt;
+
+                bets.forEach(bet => {
+                  const betDate = bet.createdAt;
+                  if (betDate === recordDate) {
+                    let totalAwardedCoins = 0;
+                    if (bet.guessRecord === record.actualRecord) {
+                      totalAwardedCoins += 100;
+                    }
+                    if (bet.guessShare === record.actualShare) {
+                      totalAwardedCoins += 100;
+                    }
+                    if (
+                      bet.guessShare === record.actualShare &&
+                      bet.guessRecord === record.actualRecord
+                    ) {
+                      totalAwardedCoins += 100;
+                    }
+                    bet.awardedCoins = totalAwardedCoins;
+                    betRepo
+                      .updateBetAwardedCoins(bet.id, totalAwardedCoins)
+                      .then(x => x);
+                  }
+                });
+              });
+
+              const data = {
+                originalBets: originalBets,
+                bets: bets,
+                recordLogs: recordLogs
+              };
+
+              res.json(data);
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        })
+        .catch(err => {
+          res.json(err);
+        });
     } else {
       res.status(405);
     }
   });
 
-  router.get("/api/recordLogs", (req, res) => {
+  //done
+  app.get("/api/recordLogs", (req, res) => {
     if (req.user.isAdmin) {
-      const recordLogs = recordLogRepo.getAllRecordLogs();
-      res.json(recordLogs);
+      recordLogRepo
+        .getAllRecordLogs()
+        .then(recordLogs => {
+          res.json(recordLogs);
+        })
+        .catch(err => {
+          res.json(err);
+        });
     } else {
       res.status(405);
     }
   });
 
-  const parseBoolean = string => {
+  const parseBoolean = booleanText => {
+    const text = new String(booleanText);
     const bool = (() => {
       switch (false) {
-        case string.toLowerCase() !== "true":
+        case text.toLowerCase() !== "true":
           return true;
-        case string.toLowerCase() !== "false":
+        case text.toLowerCase() !== "false":
           return false;
       }
     })();

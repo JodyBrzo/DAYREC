@@ -1,101 +1,87 @@
-const Sequelize = require('sequelize');
-
+const Sequelize = require("sequelize");
 const db = require("../models/");
 
-const addBet = (userId, guessRecord, guessShare) => {
-  if (userId && guessRecord && guessShare) {
-    db.Bet.create({
-      userId,
+const addBet = (user, guessRecord, guessShare) => {
+  if (user && guessRecord && guessShare) {
+    // Get an existing user bet for today's date.
+    return db.Bet.create({
+      UserId: user.id,
       guessRecord,
       guessShare
-    })
-      .then(bet => {
-        return bet;
-      })
-      .catch(err => {
-        throw err;
-      });
+    });
   }
 };
 
 //get bet for today
-const getBet = userId => {
+const getBet = user => {
   const Op = Sequelize.Op;
-  if (userId) {
-    db.Bet.findOne({
-      where: {
-        userId: userId,
-        createdAt: {
-          [Op.gte]: new Date()
-        }
+  const todaysDate = new Date();
+  todaysDate.setHours(0, 0, 0, 0); // Set time for 12:00AM
+
+  return db.Bet.findOne({
+    where: {
+      UserId: user.id,
+      createdAt: {
+        [Op.gte]: todaysDate
       }
-    })
-      .then(bet => {
-        console.log(JSON.parse(JSON.stringify(bet)));
-        return JSON.parse(JSON.stringify(bet));
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+    }
+  });
 };
 
 //returns the total coins for the user
-const getBetsTotalCoins = userId => {
-  if (userId) {
-    db.Bet.sum("awardedCoins", {
-      where: {
-        userId: userId
-      }
-    })
-      .then(bets => {
-        return bets;
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+const getBetsTotalCoins = user => {
+  return db.Bet.sum("awardedCoins", {
+    where: {
+      userId: user.id
+    }
+  });
 };
 
 //returns all the users and their bets
-const getBetRankings = () => {
-  db.User.findAll({
+const getAllUsersWithBets = () => {
+  return db.User.findAll({
     include: {
-      model: Bet
+      model: db.Bet
     }
-  })
-    .then(usersWithBets => {
-      return usersWithBets;
-    })
-    .catch(err => {
-      throw err;
-    });
+  });
 };
 
-//get user by ID and all of their bets
-const getBets = userId => {
-  if (userId) {
-    db.User.findOne({
+//returns all the users and their bets
+const getAllBets = () => {
+  return db.Bet.findAll();
+};
+
+const getBets = user => {
+  return db.User.findOne({
+    where: {
+      id: user.id
+    },
+    include: {
+      model: db.Bet
+    }
+  });
+};
+
+//update the actual record and share by id
+const updateBetAwardedCoins = (betId, awardedCoins) => {
+  return db.Bet.update(
+    {
+      awardedCoins
+    },
+    {
       where: {
-        id: userId
-      },
-      include: {
-        model: Bet
+        id: betId
       }
-    })
-      .then(userWithBets => {
-        return userWithBets;
-      })
-      .catch(err => {
-        throw err;
-      });
-  }
+    }
+  );
 };
 
 module.exports = {
   addBet: addBet,
   getBet: getBet,
   getBetsTotalCoins: getBetsTotalCoins,
-  getBetRankings: getBetRankings,
-  getBets: getBets
+  getAllUsersWithBets: getAllUsersWithBets,
+  getBets: getBets,
+  getAllBets: getAllBets,
+  updateBetAwardedCoins: updateBetAwardedCoins
 };

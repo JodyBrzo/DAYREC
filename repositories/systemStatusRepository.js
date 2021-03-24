@@ -6,7 +6,7 @@ const getAllowBetStatus = () => {
     const fileData = fs.readFileSync("./data/systemStatus.json");
     global.systemStatus = JSON.parse(fileData);
   }
-  return global.systemStatus.allowBets;
+  return global.systemStatus;
 };
 
 const setAllowBetStatus = betStatus => {
