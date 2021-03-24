@@ -133,7 +133,6 @@ h2 {
 }
 /* Your Guess Today and Actual Today */
 .today-data {
-  background-color: rgb(8, 8, 8);
   padding-top: 2rem;
   padding-bottom: 20rem;
 }
@@ -229,6 +228,10 @@ input {
   font-weight: black;
   margin-top: 2rem;
   margin-bottom: 4rem;
+}
+
+#today {
+  font-size: 4rem;
 }
 /* Place bet button */
 .place-bet-button {
