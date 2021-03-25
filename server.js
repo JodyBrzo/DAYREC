@@ -8,8 +8,8 @@ const handlebars = require("express-handlebars");
 const passport = require("./config/passport");
 
 // Setting up port and requiring models for syncing
-const PORT = process.env.PORT;
-//|| 8083
+const PORT = process.env.PORT|| 8080;
+
 const db = require("./models");
 
 const systemStatusRepo = require("./repositories/systemStatusRepository");
