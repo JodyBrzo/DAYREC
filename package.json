@@ -1,11 +1,11 @@
 {
-  "name": "Passport-Example",
+  "name": "dayrec",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "npm run lint",
-    "start": "node server.js",
+    // "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
     "watch": "nodemon server.js"
