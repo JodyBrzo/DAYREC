@@ -18,7 +18,7 @@ Technologies used within Node.JS include but are not limited to:  bcryptjs, char
 ![DAYREC: Members Page](https://github.com/JodyBrzo/DAYREC/blob/main/public/assets/members_page.png)
 
 ### Deployed Site:
-[DAYREC](/)
+[DAYREC](https://dayrec.herokuapp.com/)
 
 ### Final Thoughts:
 Thank you for taking the time to look at our work. If you'd like to see any of our other projects, please feel free to drop by our Github Pages!
