@@ -1,6 +1,5 @@
 const betRepo = require("../repositories/betRepository");
 const recordLogRepo = require("../repositories/recordLogRepository");
-
 module.exports = app => {
   // Get all data from database
   //--------------------front end js files need to match these names req.body._______
@@ -25,24 +24,19 @@ module.exports = app => {
         res.json(err);
       });
   });
-
   //returns the data for the memebrs page
   app.get("/api/members", (req, res) => {
     const data = {
       studentName: req.user.studentName
     };
-
     betRepo
       .getBet(req.user)
       .then(bet => {
         data.todaysGuess = bet ? bet : null;
-
         betRepo.getBetsTotalCoins(req.user).then(totalCoins => {
           data.userTotalCoins = totalCoins ? totalCoins : null;
-
           recordLogRepo.getRecordLog().then(recordLog => {
             data.actualToday = recordLog ? recordLog : null;
-
             res.json(data);
           });
         });
@@ -51,7 +45,6 @@ module.exports = app => {
         res.json(err);
       });
   });
-
   //return all bets for a specific user
   app.get("/api/allUserBets", (req, res) => {
     betRepo
