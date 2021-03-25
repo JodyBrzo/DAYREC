@@ -56,12 +56,16 @@ app.use((req, res, next) => {
 require("./routes/html-routes.js")(app);
 
 // Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(
-      "Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+app.listen(PORT, () => 
+  console.log(`Server listening on: http://localhost:${PORT}`)
+);
+
+// db.sequelize.sync().then(() => {
+//   app.listen(PORT, () => {
+//     console.log(
+//       "Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+//       PORT
+//     );
+//   });
+// });
