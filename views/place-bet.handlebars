@@ -3,8 +3,8 @@
   {{> wallet }}
   {{> welcome }} 
   <div class="row">
-      <div class="col-6">
-          <h2 class="place-your-bet">Place Your Bet</h2>
+      <div class="col-lg-5 col-md-12 place-your-bet">
+          <h2 class="bet-today">Place Your Bet</h2>
           <form class="bet">
             <div class="form-group">
               <label for="screenshare-bet"># Screenshare Misses</label>
@@ -14,17 +14,18 @@
               <label for="recording-bet"># Recording Misses</label>
               <input type="text" class="form-control mb-4" id="recording-guess" placeholder="Enter Your Guess" {{userData.allowBetting}}>
             </div>
-            <button type="submit" class="place-bet-button submit-button btn btn-default mt-3" id="place-bet" {{userData.allowBetting}}>PLACE BET</button>
+            <button type="submit" class="place-bet-button submit-button btn btn-default mt-4" id="place-bet" {{userData.allowBetting}}>PLACE BET</button>
           </form>
       </div>
-      <div class="col-6">
-         <h2 class="place-your-bet">Your Bet Today</h2>
-        <div class="wallet">Total Records: <span class="wallet">{{ userData.guessRecord }}</span></div>
-        <div class="wallet">Total Shares: <span class="wallet">{{ userData.guessShare }}</span></div>
+      <div class="col-lg-2"></div>      
+      <div class="col-lg-5 col-md-12 your-bet-today text-center">
+         <h2 class="bet-today">Your Bet Today</h2>
+        <div class="total">Total Records: <span class="totalUser">{{ userData.guessRecord }}</span></div>
+        <div class="total">Total Shares: <span class="totalUser">{{ userData.guessShare }}</span></div>
       </div>
   </div>
   <div class="row">
-      <div class="col-md-12">
+      <div class="col-12">
         <h2 class="historical-rankings text-center">Historical Data</h2>
       </div>
       <div id="show-no-histoical-data">
