@@ -77,10 +77,6 @@ module.exports = app => {
             });
           })
         }
-        res.json({ 
-          recordId: record.id,
-          allowBetStatus: allowBetStatus 
-        });
       });
     } else {
       res.status(405);
