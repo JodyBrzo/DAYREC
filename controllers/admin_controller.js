@@ -46,20 +46,10 @@ module.exports = app => {
             recordLogRepo
               .addRecordLog(0, 0)
               .then(recordLog => {
-                recordLogRepo
-                .updateActualRecordLog(
-                  recordLog.id,
-                  req.body.actualRecord,
-                  req.body.actualShare
-                )
-                .then(recordUpdate => {
-                  recordLogRepo.getRecordLog().then(recordLogToday => {
-                    res.json(recordLogToday);
-                  });
-                })
-                .catch(err => {
-                res.json(err);
-              });
+                res.json(recordLog);
+              })
+              .catch(err => {
+              res.json(err);
             })
             .catch(err => {
               res.json(err);
