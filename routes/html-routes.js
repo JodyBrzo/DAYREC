@@ -91,11 +91,11 @@ module.exports = function(app) {
         data.actualShare = recordLog.actualShare;
         data.recordId = recordLog.id;
       }
-    });
-    res.render("admin-update", {
-      user: req.user,
-      userData: data,
-      layout: "main"
+      res.render("admin-update", {
+        user: req.user,
+        userData: data,
+        layout: "main"
+      });
     });
   });
   app.get("/signup", (req, res) => {
