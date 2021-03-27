@@ -47,6 +47,7 @@ const recordData = (actualShareTotal, actualRecordTotal) => {
   })
     .then(response => response.json())
     .then(data => {
+      recordId.val(data.id);
       actualRecord.val(data.actualRecord);
       actualShare.val(data.actualShare);
     });
@@ -65,6 +66,7 @@ $("#allow-betting-button").click(() => {
   }).then(response => {
     response.json().then(data => {
       console.log(data);
+      recordId.val(data.recordId);
       allowBettingButton.blur();
       setBettingStatus();
     });

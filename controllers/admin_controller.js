@@ -1,4 +1,5 @@
 const betRepo = require("../repositories/betRepository");
+const { getRecordLog } = require("../repositories/recordLogRepository");
 const recordLogRepo = require("../repositories/recordLogRepository");
 const systemStatusRepo = require("../repositories/systemStatusRepository");
 
@@ -9,28 +10,28 @@ module.exports = app => {
       systemStatusRepo.setAllowBetStatus(
         allowBetStatus //admin field should be called allowBetStatus
       );
-      if (allowBetStatus) {
-        recordLogRepo
-          .getRecordLog()
-          .then(recordLogToday => {
-            if (!recordLogToday) {
-              recordLogRepo
-                .addRecordLog(0, 0)
-                .then(recordLog => {
-                  res.json(recordLog);
+      getRecordLog().then(record => {
+        if (!record) {
+            recordLogRepo
+              .addRecordLog(0, 0)
+              .then(recordLog => {
+                res.json({ 
+                  recordId: recordLog.id,
+                  allowBetStatus: allowBetStatus 
                 })
                 .catch(err => {
-                  res.json(err);
-                });
-            } else {
-              res.json(recordLogToday);
-            }
-          })
-          .catch(err => {
-            res.json(err);
-          });
-      }
-      res.json({ allowBetStatus: allowBetStatus });
+                res.json(err);
+              });
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        }
+        res.json({ 
+          recordId: record.id,
+          allowBetStatus: allowBetStatus 
+        });
+      });
     } else {
       res.status(405);
     }
@@ -39,21 +40,48 @@ module.exports = app => {
   //done
   app.put("/api/setActualRecordLog", (req, res) => {
     if (req.user.isAdmin) {
-      recordLogRepo
-        .updateActualRecordLog(
-          req.body.recordId,
-          req.body.actualRecord,
-          req.body.actualShare
-        )
-        .then(recordLog => {
-          console.log(recordLog);
-          recordLogRepo.getRecordLog().then(recordLog => {
-            res.json(recordLog);
-          });
-        })
-        .catch(err => {
-          res.json(err);
+
+      getRecordLog().then(record => {
+        if (!record) {
+            recordLogRepo
+              .addRecordLog(0, 0)
+              .then(recordLog => {
+                recordLogRepo
+                .updateActualRecordLog(
+                  recordLog.id,
+                  req.body.actualRecord,
+                  req.body.actualShare
+                )
+                .then(recordUpdate => {
+                  recordLogRepo.getRecordLog().then(recordLogToday => {
+                    res.json(recordLogToday);
+                  });
+                })
+                .catch(err => {
+                res.json(err);
+              });
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        } else {
+          recordLogRepo
+          .updateActualRecordLog(
+            req.body.recordId,
+            req.body.actualRecord,
+            req.body.actualShare
+          )
+          .then(recordLog => {
+            recordLogRepo.getRecordLog().then(recordLogToday => {
+              res.json(recordLogToday);
+            });
+          })
+        }
+        res.json({ 
+          recordId: record.id,
+          allowBetStatus: allowBetStatus 
         });
+      });
     } else {
       res.status(405);
     }
