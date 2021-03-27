@@ -3,15 +3,19 @@ const actualShare = $("input#screenshare-misses");
 const actualRecord = $("input#recording-misses");
 const recordId = $("input#record-id");
 const allowBettingButton = $("#allow-betting-button");
+const linkPlaceBet = $("#link-place-bet");
+
 let allowBettingStatus = false;
 const setBettingStatus = () => {
   allowBettingStatus = parseBoolean(allowBettingButton.attr("data-allow"));
   if (allowBettingStatus) {
     allowBettingButton.removeClass("allow-betting-button-off");
     allowBettingButton.addClass("allow-betting-button-on");
+    linkPlaceBet.show();
   } else {
     allowBettingButton.removeClass("allow-betting-button-on");
     allowBettingButton.addClass("allow-betting-button-off");
+    linkPlaceBet.hide();
   }
 };
 adminForm.on("submit", event => {

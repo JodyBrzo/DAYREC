@@ -12,6 +12,13 @@ module.exports = app => {
     userRepo
       .createUser(req.body.studentName, req.body.email, req.body.password)
       .then(user => {
+
+        req.login(user, function(err) {
+          if (err) {
+            console.log(err);
+          }
+        });
+
         res.json({ studentName: userDb.studentName });
         console.log(user);
       })

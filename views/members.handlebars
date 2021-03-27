@@ -2,25 +2,26 @@
 <div class="main-page-container container">
   {{> wallet }}
   {{> welcome }} 
-  <div class="row text-center">
-    {{!-- <div class="col-12">
-      <h2 class="ranking">Class Rankings</h2>
-    </div> --}}
+  <div class="row">
+    <div class="col-12">
+      <!--<h2 class="ranking">Class Rankings</h2>-->
+    </div>
+      {{#if userData.allowBets}}
+      <a href="/place-bet"><button class="place-bet-link btn btn-default">PLACE BET</button></a>
+      {{/if}}
   </div>
 </div>
 <div class="today-data">
     <div class="row">
-      <div class="col-lg-5 col-md-12 text-center todayData">
+      <div class="col-md-6 col-sm-12 text-center">
         <h2 id="today">Your Guess Today</h2>
-        <div class="total">Total Records: <span class="totalUser">{{ userData.guessRecord }}</span></div>
-        <div class="total">Total Shares: <span class="totalUser">{{ userData.guessShare }}</span></div>
-          <a href="/place-bet"><button class="place-bet-link btn btn-default mt-5">PLACE BET</button></a>
+        <div class="wallet">Total Records: <span class="wallet">{{ userData.guessRecord }}</span></div>
+        <div class="wallet">Total Shares: <span class="wallet">{{ userData.guessShare }}</span></div>
       </div>
-      <div class="col-lg-2"></div>
-      <div class="col-lg-5 col-md-12 text-center todayData">
+      <div class="col-md-6 col-sm-12 text-center">
         <h2 id="today">Actual Today</h2>
-        <div class="total">Total Records: <span class="totalUser">{{ userData.actualRecord }}</span></div>
-        <div class="total">Total Shares: <span class="totalUser">{{ userData.actualShare }}</span></div>
+        <div class="wallet">Total Records: <span class="wallet">{{ userData.actualRecord }}</span></div>
+        <div class="wallet">Total Shares: <span class="wallet">{{ userData.actualShare }}</span></div>
       </div>
     </div>
 </div>
