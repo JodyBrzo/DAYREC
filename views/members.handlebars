@@ -4,9 +4,11 @@
   {{> welcome }} 
   <div class="row">
     <div class="col-12">
-      <h2 class="ranking">Class Rankings</h2>
+      <!--<h2 class="ranking">Class Rankings</h2>-->
     </div>
+      {{#if userData.allowBets}}
       <a href="/place-bet"><button class="place-bet-link btn btn-default">PLACE BET</button></a>
+      {{/if}}
   </div>
 </div>
 <div class="today-data">

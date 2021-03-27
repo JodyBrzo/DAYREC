@@ -14,6 +14,7 @@ const db = require("./models");
 
 const systemStatusRepo = require("./repositories/systemStatusRepository");
 global.systemStatus = systemStatusRepo.getAllowBetStatus();
+global.systemStatus = systemStatusRepo.setAllowBetStatus(false);
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();

@@ -14,15 +14,15 @@
      <div class="navbar-nav">
           {{!-- If user is logged in, show in navbar --}}
           {{#if user }}
-              <a class="nav-link" href="/about">ABOUT</a>
-              <a class="nav-link" href="/members">MEMBER</a>
+              <a id="link-about" class="nav-link" href="/about">ABOUT</a>
+              <a id="link-members" class="nav-link" href="/members">MEMBER</a>
               {{#if userData.allowBets}}
-              <a class="nav-link" href="/place-bet">PLACE BET</a>
+              <a id="link-place-bet" class="nav-link" href="/place-bet">PLACE BET</a>
               {{/if}}
               {{#if user.isAdmin }}
-                <a class="nav-link" href="/admin-update">ADMIN</a>
+                <a id="link-admin-update" class="nav-link" href="/admin-update">ADMIN</a>
               {{/if}}  
-              <a class="nav-link" href="/logout">LOGOUT</a> 
+              <a id="link-logout" class="nav-link" href="/logout">LOGOUT</a> 
           {{!-- If user is not logged in, show in navbar --}}
           {{else}}
               <a class="nav-link" href="/about">ABOUT</a>

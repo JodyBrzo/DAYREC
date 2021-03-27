@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
     awardedCoins: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: -1
+      defaultValue: 0
     },
     createdAt: {
       type: DataTypes.DATE,

@@ -1,14 +1,14 @@
 module.exports = {
   development: {
     username: "root",
-    password: "snowPlants45",
+    password: "SnowPlants45",
     database: "dayrec_db",
     host: "127.0.0.1",
     dialect: "mysql"
   },
   test: {
     username: "root",
-    password: "snowPlants45",
+    password: "SnowPlants45",
     database: "dayrec_db",
     host: "127.0.0.1",
     dialect: "mysql"
