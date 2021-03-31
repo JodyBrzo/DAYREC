@@ -50,6 +50,7 @@ const recordData = (actualShareTotal, actualRecordTotal) => {
       recordId.val(data.id);
       actualRecord.val(data.actualRecord);
       actualShare.val(data.actualShare);
+      $('#modalActuals').modal('show');    
     });
 };
 // Allow betting functionality
@@ -81,6 +82,7 @@ $("#assign-payouts-button").click(() => {
   }).then(response => {
     response.json().then(data => {
       console.log(data);
+      $('#modalAssignPayouts').modal('show');    
     });
   });
 });
